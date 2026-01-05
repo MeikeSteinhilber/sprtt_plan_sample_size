@@ -1,0 +1,21 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+
+# raw data
+raw_data/single_10000/
+data/single_10000_normal/
+
+raw_data/combi_10000/
+data/combi_10000/
+
+raw_data/10000/
+data/10000/
+
+raw_dat/10000/
+
+raw_data/1000_normal
+raw_data/10000_normal
+raw_data/tool_sprt_sample/
