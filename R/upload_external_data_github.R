@@ -17,11 +17,15 @@ pb_release_create(repo = "MeikeSteinhilber/sprtt_plan_sample_size", tag = new_ta
 message("remember to check 'data_url' in the file: sprtt/R/download_sprtt_data.R")
 
 # wait a little bit
+Sys.sleep(15) 
+
 # Upload data file to the release
 pb_upload(
   file = path_df_all,
-  name = "sprtt_external_data_plan_sample_size", # do not change this name!
+  name = "sprtt_external_data_plan_sample_size.rds", # do not change this name!
   repo = "MeikeSteinhilber/sprtt_plan_sample_size",
   tag = new_tag_release,
   overwrite = TRUE
 )
+
+# say yes
