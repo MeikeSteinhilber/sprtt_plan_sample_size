@@ -140,12 +140,22 @@ if (nrow(bad) > 0) {
   print(bad)
 }
   
+# SAVE -------------------------------------------------------------------------
 
-# done. Example: write out combined file
+#paths
+
+path_df_all <- file.path("meta_data", glue("sprt_tool_df_all_{n_rep}.rds"))
+
+# write out combined file
 saveRDS(df, file.path("meta_data", glue("sprt_tool_df_{n_rep}.rds")), compress = "xz")
-saveRDS(df_all, file.path("meta_data", glue("sprt_tool_df_all_{n_rep}.rds")), compress = "xz")
+saveRDS(df_all, path_df_all, compress = "xz")
 
+# check the main file
+# file.exists(path_df_all)
+round(file.size(path_df_all) / 1e6,1)  # MB
 
 # save(list = c("df", "df_all"), file = glue("meta_data/sprt_tool_samples_{n_rep}.RData"))
 save(list = c("df", "df_all"), file = glue("meta_data/sprt_tool_samples_{n_rep}.RData"),
      compress = "xz", compression_level = 9)
+
+
