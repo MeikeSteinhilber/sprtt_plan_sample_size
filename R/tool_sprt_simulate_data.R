@@ -44,7 +44,13 @@ simulate_data <- function(
   
   # SIMULATION -----------------------------------------------------------------
   ## simulation parameter ------------------------------------------------------
-
+  
+  for (f_sim in hyper_f_simulated) {
+    folder_path <- glue("{hyper_raw_data_folder}/tool_sprt_sample/{hyper_n_rep}/k_{k_groups}_sd_{sd_string}_sr_{sample_ratio_string}_{hyper_distribution}/fsim_{f_sim}/")
+    if (!dir.exists(folder_path)) {
+      dir.create(folder_path, recursive = TRUE, showWarnings = FALSE)
+    }
+  }
   
   # f_sim <- 0.25;  i = 1 # Debugging Help
   # start simulation -----------------------------------------------------------
@@ -77,11 +83,11 @@ simulate_data <- function(
       # save raw data ----------------------------------------------------------
       folder_path <- glue("{hyper_raw_data_folder}/tool_sprt_sample/{hyper_n_rep}/k_{k_groups}_sd_{sd_string}_sr_{sample_ratio_string}_{hyper_distribution}/fsim_{f_sim}/")
       #print(folder_path)
-      if (!dir.exists(folder_path)) {
-        # Create the folder if it does not exist
-        dir.create(folder_path, recursive = TRUE, showWarnings = TRUE)
-        message("Folder created: ", folder_path)
-      } 
+      # if (!dir.exists(folder_path)) {
+      #   # Create the folder if it does not exist
+      #   dir.create(folder_path, recursive = TRUE, showWarnings = TRUE)
+      #   message("Folder created: ", folder_path)
+      # } 
       
       saveRDS(
         data,

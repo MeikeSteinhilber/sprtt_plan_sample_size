@@ -10,7 +10,7 @@
 
 ##SBATCH -t 00:40:00                   # Run time (hh:mm:ss) 10.000
 ##SBATCH -t 00:20:00                   # Run time (hh:mm:ss)   2.000
-#SBATCH -t 00:10:00                   # Run time (hh:mm:ss)      500
+#SBATCH -t 00:05:00                   # Run time (hh:mm:ss)      500
 ##SBATCH -t 00:05:00                   # Run time (hh:mm:ss)      200
 
 #SBATCH --mail-user=msteinhi@uni-mainz.de
