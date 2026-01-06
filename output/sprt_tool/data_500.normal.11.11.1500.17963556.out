@@ -1,0 +1,65 @@
+------daughter bash arguments------
+500
+normal
+0 0.10 0.15 0.20 0.25 0.30 0.35 0.40
+11
+11
+1500
+raw_data
+rds
+0
+100000
+TRUE
+TRUE
+------end of bash output------
+<environment: R_GlobalEnv>
+$hyper_n_rep
+[1] 500
+
+$hyper_distribution
+[1] "normal"
+
+$hyper_f_simulated
+[1] 0.00 0.10 0.15 0.20 0.25 0.30 0.35 0.40
+
+$hyper_sd
+[1] 1 1
+
+$hyper_sample_ratio
+[1] 1 1
+
+$hyper_max_n
+[1] 1500
+
+$hyper_raw_data_folder
+[1] "raw_data"
+
+$hyper_file_type
+[1] "rds"
+
+$hyper_cores_reduction
+[1] 0
+
+$hyper_seed
+[1] 100000
+
+$hyper_parallel
+[1] TRUE
+
+$hyper_sink
+[1] TRUE
+
+$help
+[1] FALSE
+
+f_sim: 0, START: 2026-01-06 09:46:38 
+f_sim: 0.1, START: 2026-01-06 09:46:38 
+f_sim: 0.15, START: 2026-01-06 09:46:38 
+f_sim: 0.2, START: 2026-01-06 09:46:38 
+f_sim: 0.25, START: 2026-01-06 09:46:38 
+f_sim: 0.3, START: 2026-01-06 09:46:38 
+f_sim: 0.35, START: 2026-01-06 09:46:38 
+f_sim: 0.4, START: 2026-01-06 09:46:38 
+slurmstepd: error: *** JOB 17963556 ON z0519 CANCELLED AT 2026-01-06T10:01:39 DUE TO TIME LIMIT ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 17963556.0 ON z0519 CANCELLED AT 2026-01-06T10:01:39 DUE TO TIME LIMIT ***

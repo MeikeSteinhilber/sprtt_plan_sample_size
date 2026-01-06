@@ -1,0 +1,1 @@
+slurmstepd: error: rmdir(/var/tmp/slurmd_spool/job17963566): Directory not empty
