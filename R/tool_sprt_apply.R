@@ -30,7 +30,7 @@ apply_sprt <- function(
   file_name <- glue::glue("{hyper_strategy}_fsim_{hyper_f_simulated}")
   
   backend <- start_parallel(hyper_parallel, hyper_cores_reduction, hyper_sink,
-                            glue("apply_{hyper_distribution}_{hyper_n_rep_raw_data}"))
+                            glue("apply_{hyper_distribution}_{hyper_n_rep_raw_data}_{hyper_f_simulated}_{hyper_sd_raw_data}"))
 
   ## set seed ------------------------------------------------------------------
   set.seed(hyper_seed)
