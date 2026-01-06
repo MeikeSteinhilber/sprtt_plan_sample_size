@@ -14,8 +14,8 @@
 
 #set -x  # for debugging
 
-declare -r hyper_n_rep_raw_data=2000
-declare -r hyper_n_batches=2        # amount of nodes!!!!!
+declare -r hyper_n_rep_raw_data=5000
+declare -r hyper_n_batches=4        # amount of nodes!!!!!
 declare -ar f_simulated=(0 $(seq 0.10 0.05 0.40) )
 declare -ar hyper_f_expected=($(seq 0.10 0.05 0.40))
 declare -ar sd_raw_data=("1111" "111" "11")

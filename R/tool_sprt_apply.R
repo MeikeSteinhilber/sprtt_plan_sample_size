@@ -96,7 +96,7 @@ apply_sprt <- function(
 
   # SIMULATION -----------------------------------------------------------------
   ## simulation parameter ------------------------------------------------------
-  power_vector <- c(0.80, 0.95) #seq(0.80, 0.95, 0.05)
+  power_vector <- c(0.80,0.90,0.95) #seq(0.80, 0.95, 0.05)
   alpha <- .05
   n_rows <- hyper_n_raw_data*k_groups
   
@@ -165,7 +165,7 @@ simulation <-
       results$sample_ratio[i]   = hyper_r_raw_data
       results$n_raw_data[i]     = hyper_n_raw_data
       results$fix_n[i]          = power_analysis(f_exp,
-                                                 k_groups = 4,
+                                                 k_groups = k_groups,
                                                  alpha = alpha,
                                                  beta = 1 - power)
       

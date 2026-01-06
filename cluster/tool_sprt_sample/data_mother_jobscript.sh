@@ -13,7 +13,7 @@
 #-------------------------------------------------------------------------------
 
 
-declare -ar hyper_n_rep=(2000)
+declare -ar hyper_n_rep=(5000)
 
 declare -ar distribution=("normal")
 #declare -ar distribution=("normal" "mixture")
