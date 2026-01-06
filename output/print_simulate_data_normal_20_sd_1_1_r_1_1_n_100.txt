@@ -1,0 +1,21 @@
+
+starting worker pid=22160 on localhost:11954 at 10:16:26.545
+starting worker pid=23240 on localhost:11954 at 10:16:26.772
+starting worker pid=22920 on localhost:11954 at 10:16:26.926
+starting worker pid=8108 on localhost:11954 at 10:16:27.078
+starting worker pid=8960 on localhost:11954 at 10:16:27.230
+starting worker pid=18796 on localhost:11954 at 10:16:27.381
+starting worker pid=19212 on localhost:11954 at 10:16:27.541
+starting worker pid=7864 on localhost:11954 at 10:16:27.688
+Folder created: raw_data/tool_sprt_sample/20/k_2_sd_1_1_sr_1_1_normal/fsim_0/
+Folder created: raw_data/tool_sprt_sample/20/k_2_sd_1_1_sr_1_1_normal/fsim_0.1/
+Folder created: raw_data/tool_sprt_sample/20/k_2_sd_1_1_sr_1_1_normal/fsim_0.15/
+Folder created: raw_data/tool_sprt_sample/20/k_2_sd_1_1_sr_1_1_normal/fsim_0.2/
+Folder created: raw_data/tool_sprt_sample/20/k_2_sd_1_1_sr_1_1_normal/fsim_0.25/
+Folder created: raw_data/tool_sprt_sample/20/k_2_sd_1_1_sr_1_1_normal/fsim_0.3/
+Folder created: raw_data/tool_sprt_sample/20/k_2_sd_1_1_sr_1_1_normal/fsim_0.35/
+Folder created: raw_data/tool_sprt_sample/20/k_2_sd_1_1_sr_1_1_normal/fsim_0.35/
+Folder created: raw_data/tool_sprt_sample/20/k_2_sd_1_1_sr_1_1_normal/fsim_0.4/
+Warning message:
+In dir.create(folder_path, recursive = TRUE, showWarnings = TRUE) :
+  'raw_data\tool_sprt_sample\20\k_2_sd_1_1_sr_1_1_normal\fsim_0.35' already exists

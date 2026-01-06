@@ -6,7 +6,7 @@ option_list <- list(
               type = "integer",
               help = "Number of repetitions", 
               action = "store",
-              default = 200
+              default = 20
   ),
   make_option(c("--hyper_distribution"), 
               type = "character",
