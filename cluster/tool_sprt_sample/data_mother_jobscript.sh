@@ -13,14 +13,18 @@
 #-------------------------------------------------------------------------------
 
 
-declare -ar hyper_n_rep=(500)
+declare -ar hyper_n_rep=(50)
 
 declare -ar distribution=("normal")
 #declare -ar distribution=("normal" "mixture")
 
 # this defines (indirectly) k_groups
-declare -ar sd=("11" "1111" "111")
-declare -ar sample_ratio=("11" "1111" "111")
+#declare -ar sd=("11" "1111" "111")
+#declare -ar sample_ratio=("11" "1111" "111")
+
+declare -ar sd=("111")
+declare -ar sample_ratio=("111")
+
 
 
 declare -ar hyper_f_simulated=(0 $(seq 0.10 0.05 0.40) )

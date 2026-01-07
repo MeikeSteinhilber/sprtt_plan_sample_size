@@ -8,9 +8,9 @@
 #SBATCH -n 1                     # Total number of tasks
 #SBATCH -c 64                    # Total number of cores for the single task
 
-##SBATCH -t 00:45:00             # Run time (hh:mm:ss) full run  10.000
-#SBATCH -t 00:30:00              # Run time (hh:mm:ss) test run   2.000
-##SBATCH -t 00:10:00              # Run time (hh:mm:ss) test run    200
+#SBATCH -t 00:45:00             # Run time (hh:mm:ss) full run  10.000
+##SBATCH -t 00:30:00              # Run time (hh:mm:ss) test run   2.000
+##SBATCH -t 00:02:00              # Run time (hh:mm:ss) test run    200
 
 #SBATCH --mail-user=msteinhi@uni-mainz.de
 #SBATCH --mail-type=ALL
@@ -23,6 +23,13 @@ module load lang/R # will load most current version of R
 # do not forget to export OMP_NUM_THREADS, if the library you use, supports this
 # not scale up to 64 threadsq
 #export OMP_NUM_THREADS=64
+
+NODE_NAME=$(hostname)
+echo "========================================" 
+echo "Job ID: $SLURM_JOB_ID"
+echo "Node: $NODE_NAME"
+echo "Started: $(date)"
+echo "========================================" 
 
 echo "------daughter bash arguments------"
 echo $1
@@ -59,4 +66,5 @@ srun Rscript cluster/tool_sprt_sample/run_tool_sprt_apply.R \
   # --hyper_seed ${15}
 
 echo "------job is finished------"
+echo "Node: $NODE_NAME | Finished: $(date)"
 

@@ -14,7 +14,15 @@
 
 #set -x  # for debugging
 
-declare -r hyper_n_rep_raw_data=5000
+EXCLUDE_NODES="x0638" # these nodes are potentially broken
+if [ -n "$EXCLUDE_NODES" ]; then
+    EXCLUDE_OPTION="--exclude=$EXCLUDE_NODES"
+    echo "Excluding nodes: $EXCLUDE_NODES"
+else
+    EXCLUDE_OPTION=""
+fi
+
+declare -r hyper_n_rep_raw_data=500
 declare -r hyper_n_batches=4        # amount of nodes!!!!!
 declare -ar f_simulated=(0 $(seq 0.10 0.05 0.40) )
 declare -ar hyper_f_expected=($(seq 0.10 0.05 0.40))
@@ -67,7 +75,8 @@ for (( hyper_batch=1; hyper_batch<=hyper_n_batches; hyper_batch++ )); do # itera
           echo $slurmout  
            echo $jobname
            
-           sbatch -A "$account" -J "$jobname" -o "$slurmout" cluster/tool_sprt_sample/apply_sprt_daughter_jobscript.sh \
+           #sbatch -A "$account" -J "$jobname" -o "$slurmout" cluster/tool_sprt_sample/apply_sprt_daughter_jobscript.sh \
+           sbatch $EXCLUDE_OPTION -A "$account" -J "$jobname" -o "$slurmout" cluster/tool_sprt_sample/apply_sprt_daughter_jobscript.sh \
                  "$hyper_f_simulated" \
                  "$hyper_batch" \
                  "$hyper_strategy" \
