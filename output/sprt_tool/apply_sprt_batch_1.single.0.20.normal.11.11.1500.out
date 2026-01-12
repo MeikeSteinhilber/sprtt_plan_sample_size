@@ -1,7 +1,7 @@
 ========================================
-Job ID: 17968075
-Node: x0355.mogon
-Started: Wed Jan  7 15:46:02 CET 2026
+Job ID: 17977758
+Node: x0465.mogon
+Started: Mon Jan 12 10:58:26 CET 2026
 ========================================
 ------daughter bash arguments------
 0.20
@@ -15,6 +15,75 @@ normal
 1500
 10000
 ------end of bash output------
-slurmstepd: error: *** STEP 17968075.0 ON x0355 CANCELLED AT 2026-01-07T17:15:53 DUE TO TIME LIMIT ***
-slurmstepd: error: *** JOB 17968075 ON x0355 CANCELLED AT 2026-01-07T17:15:53 DUE TO TIME LIMIT ***
-srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+<environment: R_GlobalEnv>
+$hyper_f_simulated
+[1] 0.2
+
+$hyper_n_rep_raw_data
+[1] 10000
+
+$hyper_batch
+[1] 1
+
+$hyper_strategy
+[1] "single"
+
+$hyper_f_expected
+[1] 0.10 0.15 0.20 0.25 0.30 0.35 0.40
+
+$hyper_select_raw_data
+[1] "detailed"
+
+$hyper_distribution
+[1] "normal"
+
+$hyper_sd_raw_data
+[1] "1_1"
+
+$hyper_r_raw_data
+[1] "1_1"
+
+$hyper_n_raw_data
+[1] 1500
+
+$hyper_file_type
+[1] "rds"
+
+$hyper_raw_data_folder
+[1] "raw_data"
+
+$hyper_data_folder
+[1] "data"
+
+$hyper_meta_data
+[1] "meta_data"
+
+$hyper_cores_reduction
+[1] 0
+
+$hyper_seed
+[1] 100000
+
+$hyper_parallel
+[1] TRUE
+
+$hyper_sink
+[1] TRUE
+
+$help
+[1] FALSE
+
+f_sim: 0.2, batch: 1, START: 2026-01-12 10:58:27 
+[1] 0.2
+[1] "   "
+Warning message:
+In e$fun(obj, substitute(ex), parent.frame(), e$data) :
+  already exporting variable(s): hyper_f_expected, alpha, power_vector
+f_sim: 0.2, batch: 1, END: 2026-01-12 11:30:45, duration: 32.3 min 
+Warning message:
+In value[[3L]](cond) :
+  beep() could not play the sound due to the following error:
+Error in play.default(x, rate, ...): no audio drivers are available
+
+------job is finished------
+Node: x0465.mogon | Finished: Mon Jan 12 11:30:46 CET 2026
