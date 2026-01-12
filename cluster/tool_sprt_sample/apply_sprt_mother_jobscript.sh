@@ -14,7 +14,7 @@
 
 #set -x  # for debugging
 
-EXCLUDE_NODES="x0638" # these nodes are potentially broken
+EXCLUDE_NODES="x0638,x0378,x0533,x0044,x0355" # these nodes are potentially broken
 if [ -n "$EXCLUDE_NODES" ]; then
     EXCLUDE_OPTION="--exclude=$EXCLUDE_NODES"
     echo "Excluding nodes: $EXCLUDE_NODES"

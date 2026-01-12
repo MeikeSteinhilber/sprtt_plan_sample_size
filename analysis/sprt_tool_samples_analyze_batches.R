@@ -7,7 +7,7 @@ library(here)
 library(stringr)
 library(fs)
 
-n_rep <- 2000
+n_rep <- 10000
 
 # create df --------------------------------------------------------------------
 
