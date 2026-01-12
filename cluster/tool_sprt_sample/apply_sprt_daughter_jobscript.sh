@@ -8,7 +8,7 @@
 #SBATCH -n 1                     # Total number of tasks
 #SBATCH -c 64                    # Total number of cores for the single task
 
-#SBATCH -t 00:45:00             # Run time (hh:mm:ss) full run  10.000
+#SBATCH -t 01:30:00             # Run time (hh:mm:ss) full run  10.000 with 4 Batches
 ##SBATCH -t 00:30:00              # Run time (hh:mm:ss) test run   2.000
 ##SBATCH -t 00:02:00              # Run time (hh:mm:ss) test run    200
 

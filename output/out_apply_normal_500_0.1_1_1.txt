@@ -1,7 +1,0 @@
-raw_data/tool_sprt_sample/500/k_2_sd_1_1_sr_1_1_normal/fsim_0.1
-[1] ""
-^normal_500_sd_1_1_r_1_1_n_1500_f_0.1_i_.*rds$
-[1] ""
-Time difference of 3.116206 mins
-mple_500_normal_sd_1_1_r_1_1
-Time difference of 2.965581 mins

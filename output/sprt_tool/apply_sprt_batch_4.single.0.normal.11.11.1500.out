@@ -1,7 +1,7 @@
 ========================================
-Job ID: 17965523
-Node: x0348.mogon
-Started: Wed Jan  7 09:41:31 CET 2026
+Job ID: 17968042
+Node: x0564.mogon
+Started: Wed Jan  7 15:46:03 CET 2026
 ========================================
 ------daughter bash arguments------
 0
@@ -13,14 +13,14 @@ normal
 11
 11
 1500
-500
+10000
 ------end of bash output------
 <environment: R_GlobalEnv>
 $hyper_f_simulated
 [1] 0
 
 $hyper_n_rep_raw_data
-[1] 500
+[1] 10000
 
 $hyper_batch
 [1] 4
@@ -73,17 +73,17 @@ $hyper_sink
 $help
 [1] FALSE
 
-f_sim: 0, batch: 4, START: 2026-01-07 09:41:32 
+f_sim: 0, batch: 4, START: 2026-01-07 15:46:04 
 [1] 0
 [1] "   "
 Warning message:
 In e$fun(obj, substitute(ex), parent.frame(), e$data) :
   already exporting variable(s): hyper_f_expected, alpha, power_vector
-f_sim: 0, batch: 4, END: 2026-01-07 09:44:19, duration: 2.8 min 
+f_sim: 0, batch: 4, END: 2026-01-07 16:32:14, duration: 46.2 min 
 Warning message:
 In value[[3L]](cond) :
   beep() could not play the sound due to the following error:
 Error in play.default(x, rate, ...): no audio drivers are available
 
 ------job is finished------
-Node: x0348.mogon | Finished: Wed Jan  7 09:44:21 CET 2026
+Node: x0564.mogon | Finished: Wed Jan  7 16:32:14 CET 2026

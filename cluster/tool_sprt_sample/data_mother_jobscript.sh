@@ -12,19 +12,22 @@
 #SBATCH -o output/sprt_tool/stdout_data_mother.txt
 #-------------------------------------------------------------------------------
 
+EXCLUDE_NODES="x0638" # these nodes are potentially broken
+if [ -n "$EXCLUDE_NODES" ]; then
+    EXCLUDE_OPTION="--exclude=$EXCLUDE_NODES"
+    echo "Excluding nodes: $EXCLUDE_NODES"
+else
+    EXCLUDE_OPTION=""
+fi
 
-declare -ar hyper_n_rep=(50)
+declare -ar hyper_n_rep=(10000)
 
 declare -ar distribution=("normal")
 #declare -ar distribution=("normal" "mixture")
 
 # this defines (indirectly) k_groups
-#declare -ar sd=("11" "1111" "111")
-#declare -ar sample_ratio=("11" "1111" "111")
-
-declare -ar sd=("111")
-declare -ar sample_ratio=("111")
-
+declare -ar sd=("11" "1111" "111")
+declare -ar sample_ratio=("11" "1111" "111")
 
 
 declare -ar hyper_f_simulated=(0 $(seq 0.10 0.05 0.40) )
@@ -55,7 +58,8 @@ for i in "${!sd[@]}"; do
     slurmout="output/sprt_tool/data_${hyper_n_rep}.${hyper_distribution}.${hyper_sd}.${hyper_sample_ratio}.${hyper_max_n}.%j.out"
     echo $slurmout  
     echo $jobname
-       sbatch -A "$account" -J "$jobname" -o "$slurmout" cluster/tool_sprt_sample/data_daughter_jobscript.sh \
+       #sbatch -A "$account" -J "$jobname" -o "$slurmout" cluster/tool_sprt_sample/data_daughter_jobscript.sh \
+       sbatch $EXCLUDE_OPTION -A "$account" -J "$jobname" -o "$slurmout" cluster/tool_sprt_sample/data_daughter_jobscript.sh \
             "$hyper_n_rep" \
             "$hyper_distribution" \
             "${hyper_f_simulated[*]}" \

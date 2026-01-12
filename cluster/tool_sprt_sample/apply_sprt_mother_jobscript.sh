@@ -22,7 +22,7 @@ else
     EXCLUDE_OPTION=""
 fi
 
-declare -r hyper_n_rep_raw_data=500
+declare -r hyper_n_rep_raw_data=10000
 declare -r hyper_n_batches=4        # amount of nodes!!!!!
 declare -ar f_simulated=(0 $(seq 0.10 0.05 0.40) )
 declare -ar hyper_f_expected=($(seq 0.10 0.05 0.40))

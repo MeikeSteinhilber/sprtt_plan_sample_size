@@ -1,0 +1,96 @@
+========================================
+Job ID: 17966148
+Node: z0383.mogon
+Started: Wed Jan  7 14:28:32 CET 2026
+========================================
+------daughter bash arguments------
+100
+normal
+0 0.10 0.15 0.20 0.25 0.30 0.35 0.40
+111
+111
+1500
+raw_data
+rds
+0
+100000
+TRUE
+TRUE
+------end of bash output------
+<environment: R_GlobalEnv>
+$hyper_n_rep
+[1] 100
+
+$hyper_distribution
+[1] "normal"
+
+$hyper_f_simulated
+[1] 0.00 0.10 0.15 0.20 0.25 0.30 0.35 0.40
+
+$hyper_sd
+[1] 1 1 1
+
+$hyper_sample_ratio
+[1] 1 1 1
+
+$hyper_max_n
+[1] 1500
+
+$hyper_raw_data_folder
+[1] "raw_data"
+
+$hyper_file_type
+[1] "rds"
+
+$hyper_cores_reduction
+[1] 0
+
+$hyper_seed
+[1] 100000
+
+$hyper_parallel
+[1] TRUE
+
+$hyper_sink
+[1] TRUE
+
+$help
+[1] FALSE
+
+f_sim: 0, START: 2026-01-07 14:28:33 
+f_sim: 0.1, START: 2026-01-07 14:28:33 
+f_sim: 0.15, START: 2026-01-07 14:28:33 
+f_sim: 0.2, START: 2026-01-07 14:28:33 
+f_sim: 0.25, START: 2026-01-07 14:28:33 
+f_sim: 0.3, START: 2026-01-07 14:28:33 
+f_sim: 0.35, START: 2026-01-07 14:28:33 
+f_sim: 0.4, START: 2026-01-07 14:28:33 
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: snow
+Loading required package: parallel
+
+Attaching package: ‘parallel’
+
+The following objects are masked from ‘package:snow’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, clusterSplit, makeCluster, parApply,
+    parCapply, parLapply, parRapply, parSapply, splitIndices,
+    stopCluster
+
+Warning message:
+In value[[3L]](cond) :
+  beep() could not play the sound due to the following error:
+Error in play.default(x, rate, ...): no audio drivers are available
+
+f_sim: 0, END: 2026-01-07 14:28:52, duration: 0.3 min 
+f_sim: 0.1, END: 2026-01-07 14:28:52, duration: 0.3 min 
+f_sim: 0.15, END: 2026-01-07 14:28:52, duration: 0.3 min 
+f_sim: 0.2, END: 2026-01-07 14:28:52, duration: 0.3 min 
+f_sim: 0.25, END: 2026-01-07 14:28:52, duration: 0.3 min 
+f_sim: 0.3, END: 2026-01-07 14:28:52, duration: 0.3 min 
+f_sim: 0.35, END: 2026-01-07 14:28:52, duration: 0.3 min 
+f_sim: 0.4, END: 2026-01-07 14:28:52, duration: 0.3 min 
+------job is finished------
+Node: z0383.mogon | Finished: Wed Jan  7 14:28:52 CET 2026

@@ -1,0 +1,13 @@
+Excluding nodes: x0638
+sd=11, sample_ratio=11
+output/sprt_tool/data_10000.normal.11.11.1500.%j.out
+sprt_tool_data_10000.normal.11.11.1500
+Submitted batch job 17966174
+sd=1111, sample_ratio=1111
+output/sprt_tool/data_10000.normal.1111.1111.1500.%j.out
+sprt_tool_data_10000.normal.1111.1111.1500
+Submitted batch job 17966175
+sd=111, sample_ratio=111
+output/sprt_tool/data_10000.normal.111.111.1500.%j.out
+sprt_tool_data_10000.normal.111.111.1500
+Submitted batch job 17966176

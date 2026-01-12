@@ -1,0 +1,5 @@
+raw_data/tool_sprt_sample/10000/k_2_sd_1_1_sr_1_1_normal/fsim_0.4
+[1] ""
+^normal_10000_sd_1_1_r_1_1_n_1500_f_0.4_i_.*rds$
+[1] ""
+Time difference of 16.06443 mins
