@@ -19,3 +19,7 @@ raw_dat/10000/
 raw_data/1000_normal
 raw_data/10000_normal
 raw_data/tool_sprt_sample/
+
+
+meta_data/sprt_tool_df_all_10000.rds
+meta_data/sprt_tool_samples_10000.RData

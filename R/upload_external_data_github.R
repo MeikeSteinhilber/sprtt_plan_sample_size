@@ -1,7 +1,7 @@
 library(piggyback)
 library(glue)
 
-n_rep <- 2000
+n_rep <- 10000
 
 # load data --------------------------------------------------------------------
 path_df_all <- file.path("meta_data", glue("sprt_tool_df_all_{n_rep}.rds"))
@@ -17,7 +17,7 @@ pb_release_create(repo = "MeikeSteinhilber/sprtt_plan_sample_size", tag = new_ta
 message("remember to check 'data_url' in the file: sprtt/R/download_sprtt_data.R")
 
 # wait a little bit
-Sys.sleep(15) 
+Sys.sleep(30) 
 
 # Upload data file to the release
 pb_upload(
@@ -28,4 +28,4 @@ pb_upload(
   overwrite = TRUE
 )
 
-# say yes
+# say yes, and ignore: HTTP error 422
