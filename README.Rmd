@@ -1,0 +1,205 @@
+---
+output: github_document
+editor_options:
+  markdown:
+    mode: gfm
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  collapse = TRUE,
+  comment = "#>",
+  out.width = "100%"
+)
+options(tibble.print_min = 5, tibble.print_max = 5)
+```
+
+# Data Repository of the sprtt Package
+
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+
+## Overview
+
+This repository contains the simulation code that generates the data used by the `plan_sample_size()` function in the [**sprtt**](https://meikesteinhilber.github.io/sprtt/) package on CRAN.
+The simulations produce a comprehensive dataset of Sequential Probability Ratio Test (SPRT) sample size scenarios across various parameter combinations, enabling sample size recommendations without real-time computation.
+
+### Why This Repository Exists
+
+Sample size planning for sequential tests requires extensive Monte Carlo simulations to characterize the sampling behavior under various scenarios of interest.
+Rather than forcing users to run these computationally intensive simulations every time they need sample size recommendations, we pre-compute a comprehensive dataset covering a wide range of realistic scenarios.
+This approach offers several advantages:
+
+- **CRAN guidelines**: The goal is to keeping the main **sprtt** package lightweight while simulation data remains external and downloadable on-demand.
+- **Speed**: Sample size recommendations are returned instantly by rendering a report based on pre-computed results
+- **Reproducibility**: All users access the same simulation results
+- **Transparency**: Full simulation code is publicly available for inspection and verification
+- **Computational Efficiency**: Eliminates redundant computation across research groups
+
+The **sprtt** package automatically downloads the simulation data attached to releases in this repository when needed.
+Users typically don't need to interact with this repository directly unless they want to:
+
+- Examine the simulation scripts in detail
+- Reproduce the simulation results for verification
+- Extend the simulations with additional parameter combinations
+
+## Quick Start - Accessing the Data
+
+**Automatic Download via sprtt Package**
+
+The `plan_sample_size()` function in **sprtt** handles data access automatically.
+However, you can manually manage the cached data:
+
+```{r, eval=FALSE}
+# Download the sample size data manually
+sprtt::download_sample_size_data()
+
+# Check if data is downloaded and view cache location
+sprtt::cache_info()
+
+# Clear the cached data
+sprtt::cache_clear()
+```
+
+
+For complete documentation on using the `plan_sample_size()` function, visit the **sprtt** package [website](https://meikesteinhilber.github.io/sprtt/).
+
+## The Core Dataset
+
+The primary output of this repository is **`sprtt_external_data_plan_sample_size.rds`**, attached to the [latest release](https://github.com/MeikeSteinhilber/sprtt_plan_sample_size/releases/latest). This compressed dataset contains pre-computed SPRT sample size characteristics for:
+
+- Multiple effect sizes of interest (Cohen's *f*)
+- Various group sizes
+- Range of power and decision-rate levels
+
+
+Due to the comprehensive nature of the simulations, the final dataset was too large to be included in the **sprtt** package directly.
+To maintain CRAN package size limits while providing full functionality:
+
+- The dataset is compressed using R's `.rds` format with maximum compression
+- It is hosted externally via GitHub releases rather than bundled with the package
+- The **sprtt** package includes lightweight download utilities to fetch the data only when needed
+- Users cache the data locally after first download, avoiding repeated downloads
+
+## Repository Structure
+
+```
+sprtt_plan_sample_size/
+├── R/                      # Core R functions for simulations
+├── cluster/                # Cluster computing scripts
+│   └── tool_sprt_sample/   # SLURM job scripts and local R runners
+├── analysis/               # Data combination and compression script
+├── raw_data/               # Generated raw simulation data
+├── data/                   # Intermediate processed data
+├── meta_data/              # Final combined datasets
+└── output/                 # Log files and SLURM outputs
+```
+
+**Key Directories:**
+
+- **`R/`**: Contains the core simulation functions used to generate raw data and apply sequential tests
+- **`cluster/tool_sprt_sample/`**: Includes both SLURM bash scripts (`.sh`) for HPC clusters and R scripts (`.R`) for local execution
+- **`analysis/`**: Scripts for combining batched simulation results into the final dataset
+- **`raw_data/`, `data/`, `meta_data/`**: Simulation data at different processing stages
+
+## Simulation Workflow
+
+The simulation pipeline consists of three main stages, each building upon the previous to create the final dataset:
+
+### 1. Generate Raw Data
+**Script**: `tool_sprt_simulate_data.R`  
+**Output**: Raw simulation datasets saved in `raw_data/`
+
+
+### 2. Apply Sequential Tests  
+**Script**: `tool_sprt_apply.R` (or cluster equivalent)  
+**Output**: Test results saved in `data/`
+
+This stage processes the raw simulated data by applying the SPRT.
+For each simulated dataset:
+
+- Applies the SPRT after each observation
+- Calculates the likelihood ratio
+- Determines stopping decision (accept H0, accept H1, or continue sampling)
+- Records sample sizes at which decisions are reached
+
+
+### 3. Combine and Compress
+**Script**: `analysis/sprt_tool_samples_analyze_batches.R`  
+**Output**: `sprtt_external_data_plan_sample_size.rds` in `meta_data/`
+
+The final stage aggregates results from all simulation batches into a single comprehensive dataset:
+
+- Combines individual batch files into the final dataset
+- Applies compression to minimize file size while maintaining fast access
+- Validates completeness of the combined dataset
+
+This compressed dataset is what gets attached to repository releases and downloaded by the **sprtt** package.
+
+## Running Simulations
+
+### Local Execution
+
+For small-scale testing or parameter exploration:
+
+```r
+# Navigate to repository root
+source("cluster/tool_sprt_sample/run_tool_sprt_simulate_data.R")
+source("cluster/tool_sprt_sample/run_tool_sprt_apply.R")
+```
+
+### Cluster Execution
+
+For full-scale simulations covering multiple parameter combinations, the repository includes hierarchical SLURM job scripts designed for high-performance computing clusters:
+
+**Mother Scripts** (orchestrate multiple jobs):
+
+- `data_mother_jobscript.sh` Launches parallel raw data generation jobs
+- `apply_mother_jobscript.sh` Launches parallel sequential test application jobs
+
+**Daughter Scripts** (execute individual parameter combinations):
+
+- `data_daughter_jobscript.sh` Runs a single raw data generation job for specific parameters
+- `apply_daughter_jobscript.sh` Runs a single test application job for specific parameters and batches of raw data
+
+The hierarchical design works as follows:
+
+1. **Mother script** defines the full parameter grid (effect sizes, group configurations, etc.)
+2. For each parameter combination, the mother script submits a separate **daughter job** to the cluster queue
+3. Daughter jobs run independently in parallel across available compute nodes
+4. Each daughter job handles a set of parameter combinations with and a batch of raw data
+5. Results are saved to shared storage for later aggregation
+
+
+The mother scripts also include options for:
+
+- splitting up the raw data into batches to run even more nodes in parallel
+- Excluding problematic compute nodes
+- Configuring output directories for logs and results
+- Managing job submission limits to avoid overwhelming the scheduler
+
+## Simulation Parameters
+
+
+The simulations systematically vary multiple parameters to create a comprehensive lookup table covering realistic research scenarios:
+
+- **True Effect Size** (`f_simulated`): Range of Cohen's *f* values from small to large effects 
+- **Effect Size of Interest** (`f_expected`): Range of Cohen's *f* values from small to large effects 
+- **Sample size** (`max_n`): Maximum sample size per group
+- **Group configuration** (`k_groups`): Number of groups determined by standard deviation and sample ratio patterns
+  - `sd`: Standard deviation patterns across groups (e.g., "11" for 2 groups, "1111" for 4 groups with equal variances)
+  - `sample_ratio`: Relative sample sizes across groups (e.g., "11" for equal allocation, "111" for balanced three-group designs)
+- **Distribution**: Data generating mechanisms which is in this case a normal distribution
+- **Replications** (`n_rep`): 10,000 replications per parameter combination to ensure stable operating characteristics
+- **Alpha and Power**: Type I and Type II error rates
+
+
+## Contributing
+
+This is a research repository primarily for documenting and archiving simulation code. For bug reports or feature requests related to the **sprtt** package, please visit the [main sprtt repository](https://github.com/MeikeSteinhilber/sprtt).
+
+## Related Links
+
+- [**sprtt** package on CRAN](https://cran.r-project.org/package=sprtt)
+- [**sprtt** documentation website](https://meikesteinhilber.github.io/sprtt/)
+- [GitHub Issues - sprtt package](https://github.com/MeikeSteinhilber/sprtt/issues)
