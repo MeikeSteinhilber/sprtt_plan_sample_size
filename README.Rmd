@@ -167,7 +167,7 @@ The hierarchical design works as follows:
 1. **Mother script** defines the full parameter grid (effect sizes, group configurations, etc.)
 2. For each parameter combination, the mother script submits a separate **daughter job** to the cluster queue
 3. Daughter jobs run independently in parallel across available compute nodes
-4. Each daughter job handles a set of parameter combinations with and a batch of raw data
+4. Each daughter job handles a set of parameter combinations and a batch of raw data
 5. Results are saved to shared storage for later aggregation
 
 
